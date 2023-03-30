@@ -1,0 +1,13 @@
+/node_modules
+
+# production
+/build
+
+/dist
+
+.parcel-cache
+
+./idea
+DS_Store
+
+.eslintrc.json

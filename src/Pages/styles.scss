@@ -1,0 +1,59 @@
+.mainContainer {
+  height: 100%;
+}
+.innerContainer {
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 20px 40px;
+  background-color: #E5E5E5
+
+}
+.loginContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.loginButton {
+  background: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
+  margin-top: 20px;
+  padding: 15px;
+  cursor: pointer;
+}
+.loginForm {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.login {
+  z-index: 10;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 350px;
+}
+.logOut {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 50px;
+  cursor: pointer;
+  img {
+    margin-left: 10px;
+  }
+}
