@@ -1,0 +1,2 @@
+/api/* http://engine.hotellook.com/api/v2/cache.json:splat 200
+/* /index.html 200

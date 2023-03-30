@@ -7,7 +7,7 @@ function* pricesWorker() {
     let locationData = yield select(location);
     let checkInData = yield select(checkIn);
     let checkOutData = yield select(checkOut);
-    const data = yield call(fetch, 'http://engine.hotellook.com/api/v2/cache.json' +'?location=' + `${locationData}`
+    const data = yield call(fetch, 'api' +'?location=' + `${locationData}`
         + '&currency=rub&' + 'checkIn=' + `${checkInData}` + '&checkOut=' + `${checkOutData}` + '&limit=5', { method: 'GET' });
     const formattedData = yield data.json();
     yield put(getPricesSuccess(formattedData));
