@@ -8,12 +8,7 @@ function* pricesWorker() {
     let checkInData = yield select(checkIn);
     let checkOutData = yield select(checkOut);
     const data = yield call(fetch, 'https://engine.hotellook.com/api/v2/cache.json:splat?' +'?location=' + `${locationData}`
-        + '&currency=rub&' + 'checkIn=' + `${checkInData}` + '&checkOut=' + `${checkOutData}` + '&limit=5',
-        { method: 'GET',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-        }});
+        + '&currency=rub&' + 'checkIn=' + `${checkInData}` + '&checkOut=' + `${checkOutData}` + '&limit=5', { method: 'GET'});
     const formattedData = yield data.json();
     yield put(getPricesSuccess(formattedData));
 }
