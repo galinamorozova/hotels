@@ -10,7 +10,7 @@ function* pricesWorker() {
     const data = yield call(fetch, 'https://engine.hotellook.com/api/v2/cache.json:splat?' +'?location=' + `${locationData}`
         + '&currency=rub&' + 'checkIn=' + `${checkInData}` + '&checkOut=' + `${checkOutData}` + '&limit=5',
         { method: 'GET',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
         });
