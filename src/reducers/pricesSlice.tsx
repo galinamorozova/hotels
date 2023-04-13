@@ -11,7 +11,7 @@ interface BookingState {
 };
 export const initialState: BookingState = {
 
-    location: "MOW",
+    location: "MOSCOW",
     checkIn: moment(Date.now()).format('YYYY-MM-DD'),
     checkOut: moment(Date.now()+86400000).format('YYYY-MM-DD'),
     days: 1,

@@ -1,6 +1,6 @@
 export const data = [
     {
-        code: "MOW",
+        code: "MOSCOW",
         name: 'МОСКВА'
     },
     {
@@ -16,7 +16,7 @@ export const data = [
         name: 'БАРНАУЛ'
     },
     {
-        code: "EGO",
+        code: "BELGOROD",
         name: 'БЕЛГОРОД'
     },
     {
