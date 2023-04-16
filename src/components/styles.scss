@@ -6,8 +6,10 @@
 };
 
 .favTitle{
-  font-weight: bold;
-  margin-bottom: 20px
+  font-weight: bolder;
+  margin-bottom: 20px;
+  font-size: 28px;
+  line-height: 28px;
 }
 .buttonIcon {
   display: flex;
@@ -22,17 +24,27 @@
 
 .price {
   font-size: 12px;
-  margin-right: 10px
+  margin-right: 10px;
+  color: #878787;
 }
-.rub {
-  font-weight: bold;
+.titles {
+  font-size: 16px;
+  color: #424242;
+  font-weight: bolder;
+  margin: 20px 0 7px 0;
+}
+
+.MuiTextField-root {
+  opacity: 50%;
 }
 
 .hotelsContainer {
   margin-left: 20px;
   padding: 20px;
-  width: 50%;
-  overflow: scroll
+  height: 100%;
+  overflow: scroll;
+  font-family: 'Roboto';
+  color: #424242;
 }
 .title {
   width: 100%;
@@ -40,15 +52,17 @@
   justify-content: space-between;
   align-items: center;
   p {
-    font-size: 25px;
+    font-size: 24px;
   }
 }
 
 .hotelsTitle {
-  font-weight: bold;
+  font-weight: bolder;
+  font-family: 'Roboto';
   margin-bottom: 20px;
   display: flex;
-  align-items: center
+  align-items: center;
+  font-size: 32px;
 }
 .arrow {
   font-size: 45px;
@@ -66,7 +80,9 @@
 }
 .fav {
   margin-top: 20px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  font-size: 17px;
+  font-family: Roboto;
 }
 .homeIcon {
   width: fit-content;
@@ -78,6 +94,7 @@
   display: flex;
   flex-direction: column;
   align-content: stretch;
+  max-height: 47vh;
 }
 .locationTitle {
   font-weight: bolder;
@@ -94,10 +111,17 @@
 }
 .find {
   background: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
-  margin-left: 25%;
-  margin-top: 10px;
+  margin-top: 20px;
   min-width: 150px;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  color: white;
+  border: none;
+}
+.find:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
 }
 .findContainer {
   width: 100%;

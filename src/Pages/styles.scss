@@ -1,18 +1,32 @@
 .mainContainer {
   height: 100%;
+  font-family: 'Roboto';
+
+  h2 {
+    font-family: Roboto;
+    color: #424242;
+  }
+}
+
+.titleLogOut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .innerContainer {
-  height: 100vh;
+  height: 90%;
+  width: 80%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: stretch;
+  margin: auto;
   padding: 20px 40px;
   background-color: #E5E5E5
 
 }
 .loginContainer {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -31,9 +45,15 @@
 
 .loginButton {
   background: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
-  margin-top: 20px;
-  padding: 15px;
+  margin-top: 32px;
+  padding: 15px 10px;
   cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+.loginButton:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
 }
 .loginForm {
   display: flex;
@@ -53,7 +73,21 @@
   justify-content: flex-end;
   padding: 10px 50px;
   cursor: pointer;
+  font-size: 16px;
+  color: #41522E;
   img {
     margin-left: 10px;
   }
+}
+
+.mainTitle {
+  color: #424242;
+  font-size: 24px;
+  text-align: center;
+  font-family: Roboto;
+}
+
+.loginTitle {
+  opacity: 50%;
+  font-size: 16px;
 }

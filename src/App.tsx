@@ -11,12 +11,10 @@ function App() {
         <div className="App">
             <header className="App-header">
             </header>
-            <body>
             <Routes>
                 <Route path='*' element={<Login />} />
                 <Route path="/hotels" element={<HotelsPage />} />
             </Routes>
-            </body>
         </div>
         </BrowserRouter>
     );

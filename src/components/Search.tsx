@@ -4,6 +4,7 @@ import {Autocomplete, Box, Button, Paper, svgIconClasses, TextField, Typography}
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import dayjs, {Dayjs} from "dayjs";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {location} from "../selectors";
 import "../App.css";
 import {
     getNewCheckIn,
@@ -11,7 +12,6 @@ import {
     getNewLocation,
     getPrices,
 } from "../reducers/pricesSlice";
-import {newHotels} from "../selectors";
 import moment from "moment";
 import {data} from '../assets/IATAdata';
 import "./styles.scss"
@@ -25,7 +25,6 @@ const Search = () => {
     let checkOutInfo: string;
     let checkInInfo: string;
 
-
     useEffect(() => {
         if (checkIn) {
             checkInInfo = checkIn.format("YYYY-MM-DD");
@@ -38,8 +37,13 @@ const Search = () => {
     const options: string[] = [];
     data.map((city) => options.push(city.name));
     const [inputValue, setInputValue] = React.useState('');
-    const [locationInfo, setLocationInfo] =React.useState<string | null>(options[0]);
+    const [locationInfo, setLocationInfo] = React.useState<string | null>(options[0]);
 
+    const disableDates = (date: dayjs.Dayjs) => {
+        const today = Date.now() - 86400000;
+        dayjs(today);
+        return date.isBefore(dayjs(today))
+    }
 
     return <>
         <Paper elevation={2} style={{padding: '20px'}}>
@@ -49,15 +53,15 @@ const Search = () => {
                 autoComplete="off"
                 className='searchContainer'
             >
-                <Typography style={{marginBottom: 10}}>
+                <h3 className='titles'>
                     Локация
-                </Typography>
+                </h3>
                 <Autocomplete
                     value={locationInfo}
                     onChange={(event: any, newValue: string | null) => {
-                        setLocationInfo(newValue);
-                        const iataCode = data.filter((city)=> city.name === newValue)
-                        dispatch(getNewLocation(iataCode[0].code))
+                        if (newValue) setLocationInfo(newValue);
+                        const iataCode = data.filter((city) => city.name === newValue)
+                        dispatch(getNewLocation(iataCode[0]?.code))
                     }}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
@@ -65,22 +69,26 @@ const Search = () => {
                     }}
                     id="controllable-states-demo"
                     options={options}
-                    renderInput={(params) => <TextField {...params} label="" />}
+                    renderInput={(params) => <TextField style={{color: 'rgba(0, 0, 0, 0.87)'}} {...params} label=""/>}
                 />
-                <Typography style={{margin: '10px 0'}}>
+                <h3 className='titles' style={{margin: '10px 0'}}>
                     Дата заселения
-                </Typography>
+                </h3>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker value={checkIn} onChange={(newValue) => {
-                            if (newValue)
-                            setCheckIn(newValue)
-                            dispatch(getNewCheckIn(newValue?.format('YYYY-MM-DD')))
-                            dispatch(getNewCheckOut(dayAmountInfo))
-                        }} />
+                    <DatePicker value={checkIn}
+                                shouldDisableDate={disableDates}
+                                onChange={(newValue) => {
+                                    if (newValue) {
+                                        setCheckIn(newValue)
+                                        dispatch(getNewCheckIn(newValue?.format('YYYY-MM-DD')))
+                                        dispatch(getNewCheckOut(dayAmountInfo))
+                                    }
+                                }}
+                    />
                 </LocalizationProvider>
-                <Typography style={{margin: '10px 0'}}>
+                <h3 className='titles'>
                     Количество дней
-                </Typography>
+                </h3>
                 <TextField
                     id="outlined-number"
                     label=""
@@ -93,18 +101,17 @@ const Search = () => {
                         setDayAmountInfo(parseInt(newValue.currentTarget.value));
                         dispatch(getNewCheckOut(parseInt(newValue.currentTarget.value)));
                     }}
-                    style={{width: '100%'}}
+                    style={{width: '100%', opacity: '50%'}}
                 />
             </Box>
             <div className='findContainer'>
-                <Button
-                    style={{marginTop: '20px', textAlign: 'center'}}
+                <button
                     onClick={() => {
                         dispatch(getPrices());
                     }}
-                    variant="contained"
-                    className='find'>
-                    Найти</Button>
+                    className='find'
+                    disabled={!locationInfo}>
+                    Найти</button>
             </div>
         </Paper>
     </>

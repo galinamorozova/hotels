@@ -44,10 +44,6 @@ export const data = [
         name: 'КРАСНОДАР'
     },
     {
-        code: "IWA",
-        name: 'ИВАНОВО'
-    },
-    {
         code: "OVB",
         name: 'НОВОСИБИРСК'
     },

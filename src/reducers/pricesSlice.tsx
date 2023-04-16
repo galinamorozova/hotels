@@ -25,15 +25,17 @@ export const pricesSlice = createSlice({
     reducers: {
         getPricesSuccess: (state, action) => {
             localStorage.removeItem('hotels');
-            let buffer = action.payload.slice();
-            buffer.forEach((item: { [x: string]: boolean; }) => {
+            let buffer = action.payload;
+            //добавляем поле "избранное" в каждый элемент списка отелей
+            buffer.map((item: { [x: string]: boolean; }) => {
                     item["favorite"] = false});
-            localStorage.setItem('hotels', JSON.stringify(buffer));
+
+             localStorage.setItem('hotels', JSON.stringify(buffer));
             state.newHotels = !state.newHotels;
+
 
         },
         getPrices: (state) => {
-
         },
         getNewCheckIn: (state, action) => {
             state.checkIn = action.payload;

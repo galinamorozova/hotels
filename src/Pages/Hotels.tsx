@@ -19,22 +19,28 @@ const HotelsPage = () => {
 
     useEffect(()=> {
         dispatch(getPrices());
+        return () => { localStorage.removeItem('fav') };
     }, [])
 
 
     return (
         <div className='mainContainer'>
-            <div
-                className='logOut'
-            onClick={()=> {
-                if (user) {
-                    localStorage.removeItem('currentUser');
-                    navigate("/")
-                }
-                if(!user) navigate("/");
-            }}>
-                Выйти
-                <img src={logButton}/>
+            <div className='titleLogOut'>
+                <h2>
+                    Simple Hotel Check
+                </h2>
+                <div
+                    className='logOut'
+                    onClick={()=> {
+                        if (user) {
+                            localStorage.removeItem('currentUser');
+                            navigate("/")
+                        }
+                        if(!user) navigate("/");
+                    }}>
+                    Выйти
+                    <img src={logButton}/>
+                </div>
             </div>
             <div className='innerContainer'>
                 <div className='search'>

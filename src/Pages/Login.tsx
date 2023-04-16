@@ -36,10 +36,10 @@ const Login = () => {
             <img className='background' src={background}/>
             <div className='loginForm'>
                 <Paper elevation={2} className='login'>
-                    <Typography>
+                    <h1 className='mainTitle'>
                         Simple Hotel Check
-                    </Typography>
-                    <p>Логин</p>
+                    </h1>
+                    <p className='loginTitle'>Логин</p>
                     <TextField
                         error={errorLogin}
                         id="outlined-controlled"
@@ -51,7 +51,7 @@ const Login = () => {
                         }}
                         onBlur={()=>validationLogin(name)}
                     />
-                    <p>Пароль</p>
+                    <p className='loginTitle'>Пароль</p>
                     <TextField
                         error={errorPassword}
                         id="outlined-controlled"
@@ -63,9 +63,8 @@ const Login = () => {
                         }}
                         onBlur={()=>validationPassword(password)}
                     />
-                    <Button
+                    <button
                         className='loginButton'
-                        style={{marginTop:'20px'}}
                         disabled={name==='' || password===''}
                         onClick={() => {
                             validationLogin(name);
@@ -79,9 +78,9 @@ const Login = () => {
                                 navigate("/hotels")
                             };
                         }}
-                        variant="contained"
                         >
-                        Войти</Button>
+                        Войти
+                        </button>
                 </Paper>
 
             </div>
